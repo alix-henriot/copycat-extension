@@ -7,7 +7,7 @@ import { Container } from "~src/components/Container";
 import { ClipboardViewer } from "~src/components/Clipboard";
 import { CopycatIcon } from "~src/components/CustomIcons";
 import { Magnet } from "~src/components/WordSelector";
-import { ThemeProvider } from "~theme";
+import { ThemeProvider } from "~src/theme";
 import { Content } from "~src/components/Content";
 import { Button, Divider, Popover, Tooltip, theme } from 'antd';
 import ClipboardHotkeys from "~src/components/ClipboardHotkeys";

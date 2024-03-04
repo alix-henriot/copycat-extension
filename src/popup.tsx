@@ -2,7 +2,7 @@ import React from 'react';
 import { useStorage } from "@plasmohq/storage/hook"
 import { Avatar, Button, Card, Col, Divider, Dropdown, Flex, Row, Slider, Space, Switch, Typography, type MenuProps, Select, Collapse, type CollapseProps, ConfigProvider, Layout, List, Input, Tag, Alert } from 'antd';
 import { BulbFilled, DownOutlined, EditOutlined, EllipsisOutlined, GoogleOutlined, LogoutOutlined, MailOutlined, SettingOutlined, UserOutlined } from '@ant-design/icons';
-import { ThemeProvider } from '~theme';
+import { ThemeProvider } from '~src/theme';
 import './popup.css';
 const { Header, Footer, Sider, Content } = Layout;
 
