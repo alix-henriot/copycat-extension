@@ -10,9 +10,26 @@
     "test": "plasmo test"
   },
   "dependencies": {
-    "plasmo": "0.84.1",
+    "@ant-design/cssinjs": "^1.18.4",
+    "@ant-design/icons": "^5.3.0",
+    "@emotion/cache": "^11.11.0",
+    "@emotion/react": "^11.11.3",
+    "@heroicons/react": "^2.1.1",
+    "@plasmohq/messaging": "^0.6.2",
+    "@plasmohq/storage": "^1.9.3",
+    "@types/antd": "^1.0.0",
+    "antd": "^5.14.1",
+    "axios": "^1.6.7",
+    "lodash.debounce": "^4.0.8",
+    "plasmo": "0.84.2",
+    "rc-animate": "^3.1.1",
+    "rc-queue-anim": "^2.0.0",
+    "rc-texty": "^0.2.0",
+    "rc-tween-one": "^3.0.6",
     "react": "18.2.0",
-    "react-dom": "18.2.0"
+    "react-dom": "18.2.0",
+    "react-hotkeys-hook": "^4.5.0",
+    "react-icons": "^5.0.1"
   },
   "devDependencies": {
     "@ianvs/prettier-plugin-sort-imports": "4.1.1",
@@ -26,6 +43,9 @@
   "manifest": {
     "host_permissions": [
       "https://*/*"
+    ],
+    "permissions": [
+      "tabs"
     ]
   }
 }
