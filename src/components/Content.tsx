@@ -1,15 +1,15 @@
-import { Flex } from "antd"
+import { Divider, Flex } from "antd"
 
 type ContentProps = {
     children: React.ReactNode,
 }
 
 
-export const Content = (props: ContentProps) => {
+export const Content = ({children}: ContentProps) => {
 
     return (
-            <Flex>
-                {props.children}
+            <Flex align="center">
+                {children}
             </Flex>
     )
 }

@@ -1,22 +1,17 @@
-import React, { useEffect, useState } from "react"
+import React, { useEffect, useRef, useState } from "react"
 import type { PlasmoCSConfig } from "plasmo";
 import { useStorage } from "@plasmohq/storage/hook";
 import { StyleProvider } from "@ant-design/cssinjs"
 import { getStyle } from "~src/components/getStyle"; // Check if necessary
 import { Container } from "~src/components/Container";
-import { Clipboard } from "~src/components/Clipboard";
-import { Logo } from "~src/components/Logo";
-import { Magnet } from "~src/components/Magnet";
+import { ClipboardViewer } from "~src/components/Clipboard";
+import { CopycatIcon } from "~src/components/CustomIcons";
+import { Magnet } from "~src/components/WordSelector";
 import { ThemeProvider } from "~theme";
 import { Content } from "~src/components/Content";
-import { useHotkeys } from "react-hotkeys-hook";
-import { Button, theme } from 'antd';
+import { Button, Divider, Popover, Tooltip, theme } from 'antd';
+import ClipboardHotkeys from "~src/components/ClipboardHotkeys";
 import { sendToBackground } from "@plasmohq/messaging";
-import { Zendesk } from "~src/components/Zendesk";
-import { Modal } from "antd";
-
-const { useToken } = theme;
-
 
 export const getShadowHostId = () => 'CSUI'
 export const config: PlasmoCSConfig = {
@@ -25,36 +20,31 @@ export const config: PlasmoCSConfig = {
 }
 
 const CSUI = () => {
+    const [clipboard, setClipboard] = useStorage("clipboard");
     const [isDockVisible, setIsDockVisible] = useStorage("isDockVisible");
-    const [isHoverable, setIsHoverable] = useState(false);
     const [isDarkMode, setIsDarkMode] = useStorage("isDarkMode");
-    //const [signedIn, setSignedIn] = await sendToBackground({type: "isSignedIn"});
-    //const [showInput, setShowInput] = useState(false);
-
-    useEffect(() => {
-        
-    }, []); 
+    const [isNotificationsEnabled, setIsNotificationsEnabled] = useStorage("isNotificationsEnabled");
+    const [isHoverable, setIsHoverable] = useState(false);
+    const [isHover, setIsHover] = useState(false);
+    const [IsWordSelectorActive, setIsWordSelectorActive] = useState(false);
     
-    useHotkeys('alt+5', () => {
-        
-        //setShowInput(!showInput)
-    }, {preventDefault: true, enableOnFormTags: ["INPUT", "TEXTAREA"]} );
 
     return (
     <ThemeProvider isDarkMode={isDarkMode}>
-    <StyleProvider container={document.getElementById('CSUI')?.shadowRoot}>
-        <Container isVisible={isDockVisible} isHoverable={false}>
-        <Logo color={'white'} size={20}/>
-        <Content>
-            {/*showInput? <Input width={600} />:<Clipboard />*/}
-            <Clipboard />
-            {/*<Zendesk />*/}
-            <Magnet size={20} isDisabled={true}/>
-        </Content>
-        </Container>
-    </StyleProvider>
+        <StyleProvider container={document.getElementById('CSUI')?.shadowRoot}>
+            <ClipboardHotkeys notifications={isNotificationsEnabled} clipboard={clipboard} setClipboard={setClipboard} />
+            <Container isVisible={isDockVisible} isHoverable={isHoverable} setIsHoverable={setIsHoverable} isHover={isHover} setIsHover={setIsHover}>
+                <Button type="text" icon={<CopycatIcon style={{ fontSize: 20}}/>}/>
+                <Content>
+                    <ClipboardViewer values={clipboard} />
+                    <Divider type="vertical" />
+                    <Magnet notifications={isNotificationsEnabled} setIsWordSelectorActive={setIsWordSelectorActive} IsWordSelectorActive={IsWordSelectorActive}/>
+                </Content>
+            </Container>
+        </StyleProvider>
     </ThemeProvider>
     )
 }
 
 export default CSUI;
+
