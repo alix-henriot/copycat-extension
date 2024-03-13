@@ -15,8 +15,9 @@ const ClipboardHotkeys = ({ clipboard, setClipboard, notifications }) => {
                     notifications && message.success(`Copied to clipboard ${i}`);
                     sendToBackground({name: 'log',
                         body: {
-                            activity: 'copy',
-                            url: window.location.href
+                            activity: 'COPY',
+                            url: window.location.href,
+                            os: navigator.userAgent,
                         }
                     });
                 } else {
@@ -24,17 +25,11 @@ const ClipboardHotkeys = ({ clipboard, setClipboard, notifications }) => {
                     document.execCommand('insertText', false, clipboardItem.value);
                     sendToBackground({name: 'log',
                         body: {
-                            activity: 'paste',
-                            url: window.location.href
+                            activity: 'PASTE',
+                            url: window.location.href,
+                            os: navigator.userAgent,
                         }
                     });
-                    const domEditableElement = document.querySelector('.ck-editor__editable') as HTMLElement;
-
-                    // Get the editor instance from the editable element.
-                    const editorInstance = (domEditableElement as any).ckeditorInstance;
-
-                    // Use the editor instance API.
-                    editorInstance.setData('<p>Hello world!<p>');
                 }
             }
         }, {preventDefault: true, enableOnFormTags: ["INPUT", "TEXTAREA"]})

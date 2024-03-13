@@ -18,8 +18,9 @@ export const Magnet = ({IsWordSelectorActive, setIsWordSelectorActive, notificat
         notifications && message.info(`Word selector ${IsWordSelectorActive ? "disabled" : "enabled"}`);
         sendToBackground({name: 'log',
                         body: {
-                            activity: 'select',
-                            url: window.location.href
+                            activity: 'SELECT',
+                            url: window.location.href,
+                            os: navigator.userAgent,
                         }
                     });
     }, {preventDefault: true, enableOnFormTags: ["INPUT", "TEXTAREA"]})
