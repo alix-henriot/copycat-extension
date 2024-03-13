@@ -1,3 +1,4 @@
+import { sendToBackground } from '@plasmohq/messaging';
 import { message } from 'antd';
 import { useHotkeys } from 'react-hotkeys-hook';
 
@@ -12,9 +13,21 @@ const ClipboardHotkeys = ({ clipboard, setClipboard, notifications }) => {
                     // Set the clipboard to the value of the clipboard item
                     setClipboard(prevClipboard => prevClipboard.map(item => item.id === i ? {...item, value: selection} : item));
                     notifications && message.success(`Copied to clipboard ${i}`);
+                    sendToBackground({name: 'log',
+                        body: {
+                            activity: 'copy',
+                            url: window.location.href
+                        }
+                    });
                 } else {
                     // Insert the value of the clipboard item at the current cursor position
                     document.execCommand('insertText', false, clipboardItem.value);
+                    sendToBackground({name: 'log',
+                        body: {
+                            activity: 'paste',
+                            url: window.location.href
+                        }
+                    });
                     const domEditableElement = document.querySelector('.ck-editor__editable') as HTMLElement;
 
                     // Get the editor instance from the editable element.

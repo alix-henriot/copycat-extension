@@ -2,6 +2,7 @@ import { Button, message } from "antd"
 import { SelectionFilledIcon, SelectionOutlinedIcon } from "./CustomIcons";
 import { useEffect } from "react";
 import { useHotkeys } from "react-hotkeys-hook";
+import { sendToBackground } from "@plasmohq/messaging";
 
 
 type MagnetProps = {
@@ -15,6 +16,12 @@ export const Magnet = ({IsWordSelectorActive, setIsWordSelectorActive, notificat
     useHotkeys('alt+4', () => {
         setIsWordSelectorActive(!IsWordSelectorActive);
         notifications && message.info(`Word selector ${IsWordSelectorActive ? "disabled" : "enabled"}`);
+        sendToBackground({name: 'log',
+                        body: {
+                            activity: 'select',
+                            url: window.location.href
+                        }
+                    });
     }, {preventDefault: true, enableOnFormTags: ["INPUT", "TEXTAREA"]})
 
     useEffect(() => {
