@@ -1,6 +1,9 @@
 import { sendToBackground } from '@plasmohq/messaging';
 import { message } from 'antd';
+import hotkeys from 'hotkeys-js';
+import { useEffect } from 'react';
 import { useHotkeys } from 'react-hotkeys-hook';
+
 
 const ClipboardHotkeys = ({ clipboard, setClipboard, notifications }) => {
     for (let i = 1; i <= 3; i++) {
@@ -34,6 +37,32 @@ const ClipboardHotkeys = ({ clipboard, setClipboard, notifications }) => {
             }
         }, {preventDefault: true, enableOnFormTags: ["INPUT", "TEXTAREA", "SELECT", "input", "textarea", "select"]})
     }
+    // SANDBOX
+    //-------------------------------------------------
+        // Function to execute when 'alt+5' is pressed
+        useEffect(() => {
+            // Configure hotkeys to work on specific elements
+            hotkeys.filter = (event) => {
+              const tagName = (event.target || event.srcElement)!.tagName;
+              hotkeys.setScope(
+                /^(INPUT|TEXTAREA|SELECT|CONTENTEDITABLE)$/.test(tagName) ? 'input' : 'other'
+              );
+              return true;
+            };
+        
+            hotkeys('alt+5', (event, handler) => {
+            event.preventDefault();
+            document.execCommand('insertText', false, 'Hello World Document.execCommand');
+            CKEDITOR.instances['editor1'].setData('<p>Hello World CKEDITOR<p>');
+            })
+            
+            
+            // Clean up
+            return () => {
+              hotkeys.unbind('alt+5');
+            };
+          }, []);
+
 
     return null;
 };
