@@ -43,7 +43,7 @@ const ClipboardHotkeys = ({ clipboard, setClipboard, notifications }) => {
         useEffect(() => {
             // Configure hotkeys to work on specific elements
             hotkeys.filter = (event) => {
-              const tagName = (event.target || event.srcElement)!.tagName;
+              const tagName = (event.target);
               hotkeys.setScope(
                 /^(INPUT|TEXTAREA|SELECT|CONTENTEDITABLE)$/.test(tagName) ? 'input' : 'other'
               );
