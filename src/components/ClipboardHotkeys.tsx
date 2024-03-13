@@ -32,7 +32,7 @@ const ClipboardHotkeys = ({ clipboard, setClipboard, notifications }) => {
                     });
                 }
             }
-        }, {preventDefault: true, enableOnFormTags: ["INPUT", "TEXTAREA"]})
+        }, {preventDefault: true, enableOnFormTags: ["INPUT", "TEXTAREA", "SELECT", "input", "textarea", "select"]})
     }
 
     return null;
