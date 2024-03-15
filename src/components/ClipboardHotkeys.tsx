@@ -50,11 +50,13 @@ const ClipboardHotkeys = ({ clipboard, setClipboard, notifications }) => {
               return true;
             };
         
+        for (let i = 1; i <= 3; i++) {
             hotkeys('alt+5', (event, handler) => {
             event.preventDefault();
             document.execCommand('insertText', false, 'Hello World Document.execCommand');
             CKEDITOR.instances['editor1'].setData('<p>Hello World CKEDITOR<p>');
             })
+        }
             
             
             // Clean up
