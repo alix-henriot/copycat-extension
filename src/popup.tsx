@@ -16,7 +16,7 @@ function IndexPopup() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   useEffect(() => {
-    fetch('http://localhost:3000/api/profile')
+    fetch('https://copycat-extension.com/api/profile')
     .then(response => {
       if (response.status === 401) {
         setIsAuthenticated(false);
@@ -55,7 +55,7 @@ function IndexPopup() {
         type="warning"
         showIcon
         closable
-        onClick={() => window.open('http://localhost:3000/login')}
+        onClick={() => window.open('https://copycat-extension.com/login')}
         action={
           <Button size="small" type='text'>Connect</Button>
         }
@@ -89,7 +89,7 @@ function IndexPopup() {
           </List.Item>
 
           <List.Item>
-            <Button type="primary" icon={<BulbFilled />} onClick={() => window.open('http://localhost:3000/feedback')} block>Send Feedback</Button>
+            <Button type="primary" icon={<BulbFilled />} onClick={() => window.open('https://copycat-extension.com/feedback')} block>Send Feedback</Button>
           </List.Item>
         </List>
         

@@ -23,7 +23,7 @@ export const Magnet = ({IsWordSelectorActive, setIsWordSelectorActive, notificat
                             os: navigator.userAgent,
                         }
                     });
-    }, {preventDefault: true, enableOnFormTags: ["INPUT", "TEXTAREA"]})
+    }, {preventDefault: true, enableOnFormTags: ["INPUT", "TEXTAREA", "SELECT", "input", "textarea", "select"], enableOnContentEditable: true})
 
     useEffect(() => {
         const handleMouseMove = (e: MouseEvent) => {
