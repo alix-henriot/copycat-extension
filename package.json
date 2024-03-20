@@ -2,7 +2,7 @@
   "name": "copycat",
   "displayName": "Copycat",
   "version": "0.0.1",
-  "description": "A basic Plasmo extension.",
+  "description": "A multi-clipboard extension for multi-tasking",
   "author": "Alix Henriot",
   "scripts": {
     "dev": "plasmo dev",
