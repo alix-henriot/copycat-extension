@@ -19,4 +19,6 @@ chrome.runtime.onInstalled.addListener(async () => {
   await storage.set("isNotificationsEnabled", true);
 
   console.log('Default storage values set!');
+
+  //chrome.tabs.create({ url: "https://copycat-extension.com/login" });
 });

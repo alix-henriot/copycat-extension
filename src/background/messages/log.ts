@@ -2,16 +2,18 @@ import type { PlasmoMessaging } from "@plasmohq/messaging"
  
   const handler: PlasmoMessaging.MessageHandler = async (req, res) => {
     const ip = await getIpAddress();
+    const osMatch = req.body.os.match(/(win|mac|lin)/i);
+    const os = osMatch ? osMatch[0].toUpperCase() : 'UNK';
 
-    fetch(`http://localhost:3000/log/activity`, {
+    fetch(`https://copycat-extension.com/log/activity`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        credentials: 'include', // This will include cookies in the request
+        credentials: 'include',
         body: JSON.stringify({
           url : req.body.url,
-          os : req.body.os,
+          os : os,
           activity : req.body.activity,
           ip: ip
         }),
