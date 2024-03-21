@@ -14,7 +14,7 @@ export const ThemeProvider = (props: ThemeProviderProps) => {
         algorithm: [themeAlgorithm],
 
         token: {
-          colorPrimaryBg: props.isDarkMode ? "rgba(0, 0, 0, 0.6" : "rgba(255, 255, 255, 0.6",
+          colorPrimaryBg: props.isDarkMode ? "rgba(0, 0, 0, 0.8" : "rgba(255, 255, 255, 0.8",
         }
       }}
     >
