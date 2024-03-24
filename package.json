@@ -2,8 +2,8 @@
   "name": "copycat",
   "displayName": "Copycat",
   "version": "0.0.1",
-  "description": "A multi-clipboard extension for multi-tasking",
-  "author": "Alix Henriot",
+  "description": "Copy-paste more and faster with three clipboards",
+  "author": "Copycat",
   "scripts": {
     "dev": "plasmo dev",
     "build": "plasmo build",
@@ -44,10 +44,9 @@
   },
   "manifest": {
     "host_permissions": [
-      "https://*/*"
+      "https://copycat-extension.com/*"
     ],
     "permissions": [
-      "tabs"
     ]
   }
 }
