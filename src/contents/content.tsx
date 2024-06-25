@@ -16,7 +16,7 @@ import { sendToBackground } from "@plasmohq/messaging";
 export const getShadowHostId = () => 'CSUI'
 export const config: PlasmoCSConfig = {
     matches: ["<all_urls>"],
-    run_at: "document_start"
+    run_at: "document_start",
 }
 
 const CSUI = () => {

@@ -5,7 +5,7 @@ import type { PlasmoMessaging } from "@plasmohq/messaging"
     const osMatch = req.body.os.match(/(win|mac|lin)/i);
     const os = osMatch ? osMatch[0].toUpperCase() : 'UNK';
 
-    fetch(`https://copycat-extension.com/log/activity`, {
+    fetch(process.env.PLASMO_PUBLIC_API_BASE_URL, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
